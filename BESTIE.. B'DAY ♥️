@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BESTIEE B'DAY ♥️💕 Countdown</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('bestie_birthday_bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #playButton, #shareButton {
+      padding: 12px 25px;
+      margin: 10px;
+      border: none;
+      border-radius: 25px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    #playButton:hover, #shareButton:hover {
+      background-color: #ff1493;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 2em; }
+      #countdown { font-size: 1.5em; }
+    }
+
+    .celebrate {
+      font-size: 2.5em;
+      animation: pop 1s infinite alternate;
+      color: #FFD700;
+    }
+
+    @keyframes pop {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>BESTIEE B'DAY ♥️💕</h1>
+    <div id="countdown"></div>
+    <button id="playButton" onclick="playMusic()">🎵 Play Music</button>
+    <button id="shareButton" onclick="sharePage()">📤 Share</button>
+    <audio id="bgmusic" src="kaun_tujhe.mp3" loop></audio>
+  </div>
+
+  <script>
+    const countdownDate = new Date('2025-06-21T00:00:00').getTime();
+
+    const countdownFunction = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = 
+          "<div class='celebrate'>🎉 Happy Birthday BESTIEE! 🎉</div>";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s `;
+    }, 1000);
+
+    function playMusic() {
+      const music = document.getElementById("bgmusic");
+      music.play().catch(error => alert("Click again to enable music."));
+    }
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "Bestie Countdown 🎂",
+          text: "Check out this sweet birthday countdown!",
+          url: window.location.href
+        }).catch(console.error);
+      } else {
+        alert("Sharing is not supported on this device.");
+      }
+    }
+  </script>
+</body>
+</html>
