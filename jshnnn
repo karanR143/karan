@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎉 Jass's Birthday Countdown</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      animation: fadeInDown 2s ease-in-out;
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .photo {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      object-fit: cover;
+      margin-bottom: 30px;
+      animation: zoomIn 2s ease-in-out;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 15px 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      animation: fadeInUp 3s ease-in;
+    }
+
+    #music-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      background-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      animation: fadeIn 3s ease-in;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes
